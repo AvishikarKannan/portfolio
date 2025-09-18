@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<title>Suspicious activity</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#38e07b",
+            "background-light": "#f6f8f7",
+            "background-dark": "#122017",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="flex h-screen flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-primary/20 dark:border-primary/20 px-6 sm:px-10 py-4">
+<div class="flex items-center gap-3 sm:gap-4">
+<div class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary/20 text-primary">
+<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M2 17L12 22L22 17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M2 12L12 17L22 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h1 class="text-xl font-bold text-gray-900 dark:text-white">AthletiQ</h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-black/60 transition-colors hover:text-black dark:text-white/60 dark:hover:text-white" href="./dash.html">Dashboard</a>
+<a class="text-sm font-medium text-black/60 transition-colors hover:text-black dark:text-white/60 dark:hover:text-white" href="./cand.html">Candidates</a>
+<a class="text-sm font-medium text-black dark:text-white" href="./sus.html">Assessments</a>
+<a class="text-sm font-medium text-black/60 transition-colors hover:text-black dark:text-white/60 dark:hover:text-white" href="./repots.html">Reports</a>
+<a class="text-sm font-medium text-black/60 transition-colors hover:text-black dark:text-white/60 dark:hover:text-white" href="./settings.html">Settings</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZTw3Z9zebHz61fB80B7UynDSIetsyXzsxYUHwOZQ3aZHAbvsZCIMINEa8GJpm2JpKejNGCG0e-uM9Gx2OItSCbc-k61_KLjlULuUQ5vsIvMqd-NX2SEnEEdDfK64ediimkqdiAavQB19n05pJBW2I2CeW8JFhwtBHks_wt1BvtaTpcyhIZI5pVtHT82Z0pWxvzHlnkXOoCE5SRkS3bMCJpkdgJaUGgUghyu_2uXlxOOYhl2oQKmf8w37zzij0aSLYkvL4iA1UgaQ");'></div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto p-4 sm:p-6 md:p-10">
+<div class="mx-auto max-w-7xl">
+<div class="mb-8">
+<h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Flagged Users</h2>
+<p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Review and manage users flagged for suspicious activity.</p>
+</div>
+<div class="overflow-x-auto rounded-lg shadow-md bg-background-light dark:bg-background-dark border border-primary/20">
+<table class="w-full text-sm text-left">
+<thead class="bg-primary/5 dark:bg-primary/10">
+<tr>
+<th class="px-6 py-3 font-medium text-gray-900 dark:text-white" scope="col">Athlete Name</th>
+<th class="px-6 py-3 font-medium text-gray-900 dark:text-white" scope="col">Location</th>
+<th class="px-6 py-3 font-medium text-gray-900 dark:text-white" scope="col">Reason Flagged</th>
+<th class="px-6 py-3 font-medium text-gray-900 dark:text-white" scope="col">Date Flagged</th>
+<th class="px-6 py-3 font-medium text-gray-900 dark:text-white" scope="col">Severity</th>
+<th class="px-6 py-3 font-medium text-gray-900 dark:text-white text-right" scope="col">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/20 dark:divide-primary/20">
+<tr class="hover:bg-primary/5 dark:hover:bg-primary/10">
+<td class="px-6 py-4 whitespace-nowrap text-gray-800 dark:text-gray-200">Rohan Sharma</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">Mumbai, MH</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">Unusual activity pattern</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">2024-01-15</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-500/20 text-red-500">High</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="font-semibold text-primary hover:text-primary/80">Mark as Reviewed</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 dark:hover:bg-primary/10">
+<td class="px-6 py-4 whitespace-nowrap text-gray-800 dark:text-gray-200">Priya Patel</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">Delhi, DL</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">Multiple failed assessments</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">2024-02-20</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-500/20 text-orange-500">Medium</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="font-semibold text-primary hover:text-primary/80">Mark as Reviewed</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 dark:hover:bg-primary/10">
+<td class="px-6 py-4 whitespace-nowrap text-gray-800 dark:text-gray-200">Aditya Singh</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">Bengaluru, KA</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">Inconsistent performance data</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">2024-03-05</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-500/20 text-yellow-500">Low</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="font-semibold text-primary hover:text-primary/80">Mark as Reviewed</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 dark:hover:bg-primary/10">
+<td class="px-6 py-4 whitespace-nowrap text-gray-800 dark:text-gray-200">Ananya Gupta</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">Chennai, TN</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">Suspected fraudulent information</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">2024-04-10</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-500/20 text-red-500">High</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="font-semibold text-primary hover:text-primary/80">Mark as Reviewed</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 dark:hover:bg-primary/10">
+<td class="px-6 py-4 whitespace-nowrap text-gray-800 dark:text-gray-200">Vikram Reddy</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">Hyderabad, TS</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">Abnormal assessment completion time</td>
+<td class="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">2024-05-18</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-500/20 text-orange-500">Medium</span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-right">
+<button class="font-semibold text-primary hover:text-primary/80">Mark as Reviewed</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+</body></html>

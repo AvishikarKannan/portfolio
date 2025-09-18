@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reports</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#38e07b",
+              "background-light": "#f6f8f7",
+              "background-dark": "#122017",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-stone-900 dark:text-stone-100">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="sticky top-0 z-10 flex items-center justify-between whitespace-nowrap border-b border-stone-200/10 dark:border-stone-800/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm px-4 md:px-10 py-3">
+<div class="flex items-center gap-4">
+<div class="w-6 h-6 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold">AthletiQ</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-black/60 transition-colors hover:text-black dark:text-white/60 dark:hover:text-white" href="./dash.html">Dashboard</a>
+<a class="text-sm font-medium text-black/60 transition-colors hover:text-black dark:text-white/60 dark:hover:text-white" href="./cand.html">Candidates</a>
+<a class="text-sm font-medium text-black/60 transition-colors hover:text-black dark:text-white/60 dark:hover:text-white" href="./sus.html">Assessments</a>
+<a class="text-sm font-medium text-black dark:text-white" href="./repots.html">Reports</a>
+<a class="text-sm font-medium text-black/60 transition-colors hover:text-black dark:text-white/60 dark:hover:text-white" href="./settings.html">Settings</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-full h-10 w-10 bg-primary/10 dark:bg-primary/20 hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors text-stone-700 dark:text-stone-300">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216ZM48,184c7.7-13.24,16-43.92,16-80a64,64,0,1,1,128,0c0,36.05,8.28,66.73,16,80Z"></path>
+</svg>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBZuVJ7XkyJ9r8Uvj24YPvzT9hwjm1Mhi9bwuRfbKyMJ2ge3a-wsuurse6llfNkEq1Cc3B6pLspPnvCLiH7a43hMUxJULG4ConZvuKR7VSTpPKMIicItayfW9AqW90LHbXXh2BaULXBxQ0Az9KhFttyI9E8AStM_LrYfJ_rRxUmhZDgZUm5IPOvw360NMeON7I-Tdp72BbTPnY0LZdt6gc18s2hkJ688yZ1DkZMQ_4m9Xbwna2jDMdRnL0ovCvoGm0bftP2uHrGyrQ");'></div>
+</div>
+</header>
+<main class="flex-1 px-4 sm:px-6 lg:px-8 xl:px-20 2xl:px-40 py-10">
+<div class="max-w-7xl mx-auto">
+<div class="mb-10">
+<h1 class="text-3xl sm:text-4xl font-bold tracking-tight">Reports</h1>
+<p class="mt-2 text-base text-stone-500 dark:text-stone-400">Analyze performance data across various assessments and demographics.</p>
+</div>
+<div class="space-y-12">
+<section>
+<h2 class="text-2xl font-bold mb-4">Gender Distribution</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-1 bg-background-light dark:bg-background-dark/50 border border-stone-200 dark:border-stone-800 rounded-xl p-6 flex flex-col justify-between shadow-sm">
+<div>
+<p class="text-sm font-medium text-stone-500 dark:text-stone-400">Overall Distribution</p>
+<div class="relative w-48 h-48 mx-auto my-4">
+<svg class="w-full h-full" viewBox="0 0 36 36">
+<path class="text-primary/10 dark:text-primary/20" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4"></path>
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke="currentColor" stroke-dasharray="60, 100" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-4xl font-bold">60%</span>
+<span class="text-sm text-stone-500 dark:text-stone-400">Male</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-center gap-1 text-sm">
+<p class="text-stone-500 dark:text-stone-400">vs. last month</p>
+<p class="text-green-500 font-medium">+10%</p>
+</div>
+</div>
+<div class="md:col-span-2 bg-background-light dark:bg-background-dark/50 border border-stone-200 dark:border-stone-800 rounded-xl p-6 shadow-sm">
+<p class="text-base font-medium mb-4">Breakdown</p>
+<div class="grid grid-cols-3 gap-6 items-end h-[240px]">
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-primary/10 dark:bg-primary/20 rounded-t-lg flex-1" style="height: 60%;">
+<div class="bg-primary w-full h-full rounded-t-lg" style="height: 100%;"></div>
+</div>
+<p class="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">Male</p>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-primary/10 dark:bg-primary/20 rounded-t-lg flex-1" style="height: 35%;">
+<div class="bg-primary w-full h-full rounded-t-lg" style="height: 100%;"></div>
+</div>
+<p class="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">Female</p>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-primary/10 dark:bg-primary/20 rounded-t-lg flex-1" style="height: 5%;">
+<div class="bg-primary w-full h-full rounded-t-lg" style="height: 100%;"></div>
+</div>
+<p class="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">Other</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-2xl font-bold mb-4">Test Type Performance</h2>
+<div class="bg-background-light dark:bg-background-dark/50 border border-stone-200 dark:border-stone-800 rounded-xl p-6 shadow-sm">
+<div class="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6">
+<div>
+<p class="text-base font-medium">Average Score</p>
+<p class="text-4xl font-bold tracking-tight text-primary">75%</p>
+</div>
+<div class="flex items-center gap-1 text-sm">
+<p class="text-stone-500 dark:text-stone-400">Overall change</p>
+<p class="text-green-500 font-medium">+5%</p>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-4 items-end h-[240px]">
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-primary/10 dark:bg-primary/20 rounded-lg flex-1" style="height: 70%;">
+<div class="bg-primary w-full h-full rounded-lg" style="height: 70%;"></div>
+</div>
+<p class="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">Physical</p>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-primary/10 dark:bg-primary/20 rounded-lg flex-1" style="height: 85%;">
+<div class="bg-primary w-full h-full rounded-lg" style="height: 85%;"></div>
+</div>
+<p class="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">Cognitive</p>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-primary/10 dark:bg-primary/20 rounded-lg flex-1" style="height: 60%;">
+<div class="bg-primary w-full h-full rounded-lg" style="height: 60%;"></div>
+</div>
+<p class="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">Technical</p>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-2xl font-bold mb-4">Region-wise Performance</h2>
+<div class="w-full aspect-video rounded-xl object-cover overflow-hidden shadow-sm">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAju15WWgbFuFt9xI5D9Yve9G8Mv0WEhM5b-61GGusksLsNlXZ_qtfJnwdcCBnQIuzz-A_t_oXEKUK7mV8Bv4kBAsGqPzMLAU1ocbeeGvTGAC0f0LrsaV2GfzBcq2AZ7Fp0a8k_Dk2EHipfoley-odtrF92bn8xZ7M3eJbscNJDCU6lyqYY8cfo_XOvRn5M6KN-gBlOm89BRVvPOX0IKE7xuA6YrMfKSxsV2AtG3IZlE9bAP4ZMWJQgd50Fyup5svTgz4fmkeuvfk8");'></div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

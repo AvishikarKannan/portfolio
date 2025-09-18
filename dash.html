@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard</title>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#38e07b",
+              "background-light": "#f6f8f7",
+              "background-dark": "#122017",
+            },
+            fontFamily: {
+              display: ["Space Grotesk"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="flex h-full min-h-screen w-full flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-primary/20 dark:border-primary/30 px-4 sm:px-6 lg:px-8 py-3">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-background-dark">
+<span class="material-symbols-outlined"> trending_up </span>
+</div>
+<h2 class="text-xl font-bold text-gray-900 dark:text-white">AthletiQ</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-black dark:text-white" href="./dash.html">Dashboard</a>
+<a class="text-sm font-medium text-black/60 transition-colors hover:text-black dark:text-white/60 dark:hover:text-white" href="./cand.html">Candidates</a>
+<a class="text-sm font-medium text-black/60 transition-colors hover:text-black dark:text-white/60 dark:hover:text-white" href="./sus.html">Assessments</a>
+<a class="text-sm font-medium text-black/60 transition-colors hover:text-black dark:text-white/60 dark:hover:text-white" href="./repots.html">Reports</a>
+<a class="text-sm font-medium text-black/60 transition-colors hover:text-black dark:text-white/60 dark:hover:text-white" href="./settings.html">Settings</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="relative rounded-full p-2 text-gray-600 dark:text-gray-400 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary dark:hover:text-primary">
+<span class="material-symbols-outlined"> notifications </span>
+<span class="absolute top-1 right-1 block h-2 w-2 rounded-full bg-primary"></span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA35OS1Chv11Z8Jonu5stBttnwPVbmAbYMMFbvt2iw2Ghbug_54JA0oCOCOmsoWiue9_999oeHTJ86KTd2k0k-9rothadgM5S2khgmdeINllNVxiCJ-llqRTM1mo-5-KXYsDItxIKejjJHSlHj9qANxx3Ztv8tR5CgQAVnF10-oVWMBk0NVThXABcHns7_XMrVS4hfjFzYwHgF4EvTDn4phmoAiyuodBAIXdZVTmThpybTwrp_JLG5nHznzL-KoOkNpmYdb426MUIk");'></div>
+</div>
+</header>
+<main class="flex-1 p-4 sm:p-6 lg:p-8">
+<div class="mx-auto max-w-7xl">
+<div class="mb-8">
+<h1 class="text-3xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
+<p class="text-gray-500 dark:text-gray-400">Overview of key metrics and recent activity.</p>
+</div>
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+<div class="flex flex-col gap-2 rounded-lg bg-white dark:bg-background-dark border border-gray-200 dark:border-primary/20 p-6 shadow-sm">
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Registered Athletes</p>
+<p class="text-3xl font-bold text-gray-900 dark:text-white">1,250</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg bg-white dark:bg-background-dark border border-gray-200 dark:border-primary/20 p-6 shadow-sm">
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400">Verified Candidates</p>
+<p class="text-3xl font-bold text-gray-900 dark:text-white">875</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg bg-white dark:bg-background-dark border border-gray-200 dark:border-primary/20 p-6 shadow-sm">
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400">Suspicious Accounts</p>
+<p class="text-3xl font-bold text-gray-900 dark:text-white">50</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg bg-white dark:bg-background-dark border border-gray-200 dark:border-primary/20 p-6 shadow-sm">
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400">Pending Reviews</p>
+<p class="text-3xl font-bold text-gray-900 dark:text-white">12</p>
+</div>
+</div>
+<div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+<div class="rounded-lg bg-white dark:bg-background-dark border border-gray-200 dark:border-primary/20 p-6 shadow-sm">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Athletes by Region</h3>
+<div class="grid min-h-[200px] grid-flow-col gap-4 grid-rows-[1fr_auto] items-end justify-items-center">
+<div class="w-full rounded-t bg-primary/20 dark:bg-primary/30" style="height: 60%;"></div>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400">North</p>
+<div class="w-full rounded-t bg-primary/20 dark:bg-primary/30" style="height: 20%;"></div>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400">South</p>
+<div class="w-full rounded-t bg-primary/20 dark:bg-primary/30" style="height: 20%;"></div>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400">East</p>
+<div class="w-full rounded-t bg-primary/20 dark:bg-primary/30" style="height: 40%;"></div>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400">West</p>
+<div class="w-full rounded-t bg-primary/20 dark:bg-primary/30" style="height: 10%;"></div>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400">Central</p>
+</div>
+</div>
+<div class="rounded-lg bg-white dark:bg-background-dark border border-gray-200 dark:border-primary/20 p-6 shadow-sm">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Submissions Over Time</h3>
+<div class="flex min-h-[200px] flex-col justify-between">
+<svg fill="none" height="100%" preserveAspectRatio="none" viewBox="0 0 472 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H0V109Z" fill="url(#paint0_linear_chart)"></path>
+<path class="text-primary" d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="currentColor" stroke-linecap="round" stroke-width="3"></path>
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_chart" x1="236" x2="236" y1="1" y2="149">
+<stop class="text-primary" stop-color="currentColor" stop-opacity="0.3"></stop>
+<stop class="text-primary" offset="1" stop-color="currentColor" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+</svg>
+<div class="flex justify-around mt-2">
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400">Jan</p>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400">Feb</p>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400">Mar</p>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400">Apr</p>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400">May</p>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400">Jun</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Recent Submissions</h2>
+<div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-primary/20 bg-white dark:bg-background-dark shadow-sm">
+<table class="w-full table-auto">
+<thead class="bg-gray-50 dark:bg-white/5">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Athlete Name</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Sport</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Region</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Submission Date</th>
+<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200 dark:divide-primary/20">
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">Aarav Patel</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Basketball</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">North</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">2024-07-20</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 dark:bg-primary/20 text-yellow-800 dark:text-yellow-300">Pending</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">Priya Sharma</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Soccer</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">South</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">2024-07-18</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 dark:bg-primary/20 text-green-800 dark:text-primary">Verified</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">Rohan Gupta</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Football</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">East</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">2024-07-15</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 dark:bg-primary/20 text-red-800 dark:text-red-400">Suspicious</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">Ananya Singh</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Volleyball</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">West</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">2024-07-12</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 dark:bg-primary/20 text-yellow-800 dark:text-yellow-300">Pending</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">Vikram Kumar</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Swimming</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">Central</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">2024-07-10</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 dark:bg-primary/20 text-green-800 dark:text-primary">Verified</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
