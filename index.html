@@ -1,120 +1,190 @@
 <!DOCTYPE html>
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>AthletiQ - Login</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-<script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#38e07b",
-              "background-light": "#f6f8f7",
-              "background-dark": "#122017",
-            },
-            fontFamily: {
-              display: ["Space Grotesk", "sans-serif"],
-            },
-            borderRadius: {
-              DEFAULT: "0.25rem",
-              lg: "0.5rem",
-              xl: "0.75rem",
-              full: "9999px",
-            },
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>AthletiQ - Login</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#38e07b",
+            "background-light": "#f6f8f7",
+            "background-dark": "#122017",
+          },
+          fontFamily: {
+            display: ["Space Grotesk", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px",
           },
         },
-      };
-    </script>
-<style>
-      body {
-        font-family: "Space Grotesk", sans-serif;
+      },
+    };
+  </script>
+  <style>
+    body {
+      font-family: "Space Grotesk", sans-serif;
+    }
+  </style>
+  <!-- Supabase for authentication -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // Configuration
+    const SUPABASE_URL = 'https://pyfvjoldnpygwxerpxat.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB5ZnZqb2xkbnB5Z3d4ZXJweGF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyODE5OTksImV4cCI6MjA3Mzg1Nzk5OX0.2vw4rPRWF4YRPq-x_G_PaO0KNEDlC876it92YIOYZJs';
+
+    let supabaseClient;
+
+    // Valid credentials (for demo purposes)
+    const validCredentials = {
+      'aarav.patel@example.com': { password: 'Aarav@123', name: 'Aarav Patel', id: 'aarav-001' },
+      'ananya.singh@example.com': { password: 'Ananya@123', name: 'Ananya Singh', id: 'ananya-002' },
+      'diya.sharma@example.com': { password: 'Diya@123', name: 'Diya Sharma', id: 'diya-003' },
+      'rohan.gupta@example.com': { password: 'Rohan@123', name: 'Rohan Gupta', id: 'rohan-004' }
+    };
+
+    // Initialize Supabase
+    document.addEventListener('DOMContentLoaded', function () {
+      try {
+        supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+      } catch (error) {
+        console.error('Failed to initialize Supabase:', error);
       }
-    </style>
+    });
+
+    async function handleLogin(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value.toLowerCase();
+      const password = document.getElementById('password').value;
+      const submitButton = event.target.querySelector('button[type="submit"]');
+
+      // Show loading state
+      submitButton.disabled = true;
+      submitButton.textContent = 'Signing in...';
+
+      try {
+        // Check credentials
+        const userCredentials = validCredentials[email];
+
+        if (!userCredentials || userCredentials.password !== password) {
+          throw new Error('Invalid email or password');
+        }
+
+        // Try to get candidate data from Supabase if available
+        let candidateData = null;
+        if (supabaseClient) {
+          try {
+            const { data, error } = await supabaseClient
+              .from('candidates')
+              .select('*')
+              .eq('name', userCredentials.name)
+              .single();
+
+            if (!error && data) {
+              candidateData = data;
+            }
+          } catch (supabaseError) {
+            console.log('Supabase not available, using static data');
+          }
+        }
+
+        // Store login session
+        localStorage.setItem('athletiq_user', JSON.stringify({
+          email: email,
+          name: userCredentials.name,
+          candidateId: candidateData?.id || userCredentials.id,
+          loginTime: new Date().toISOString()
+        }));
+
+        // Redirect to dashboard
+        window.location.href = './dash.html';
+
+      } catch (error) {
+        console.error('Login error:', error);
+        alert(error.message || 'Login failed. Please try again.');
+      } finally {
+        // Reset button state
+        submitButton.disabled = false;
+        submitButton.textContent = 'Log In';
+      }
+    }
+  </script>
 </head>
+
 <body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
-<div class="flex min-h-screen items-center justify-center p-4">
-<div class="w-full max-w-md space-y-8">
-<div class="text-center">
-<div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 dark:bg-primary/30">
-<svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-<h2 class="mt-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">AthletiQ</h2>
-<p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Welcome back! Please sign in to your account.</p>
-</div>
-<form 
-  class="space-y-6 rounded-xl bg-white/5 p-8 shadow-2xl shadow-black/10 backdrop-blur-sm dark:bg-black/10"
-  onsubmit="event.preventDefault(); window.location.href='./dash.html';"
->
-  <div>
-    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-      Username or Email
-    </label>
-    <div class="mt-1">
-      <input
-        id="email"
-        name="email"
-        type="email"
-        autocomplete="email"
-        placeholder="you@example.com"
-        required
-        class="block w-full appearance-none rounded-lg border border-gray-300 bg-gray-50 px-3 py-3 placeholder-gray-400 shadow-sm focus:border-primary focus:outline-none focus:ring-primary dark:border-gray-600 dark:bg-background-dark dark:text-white dark:placeholder-gray-500 dark:focus:border-primary/80 dark:focus:ring-primary/80"
-      />
+  <div class="flex min-h-screen items-center justify-center p-4">
+    <div class="w-full max-w-md space-y-8">
+      <div class="text-center">
+        <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 dark:bg-primary/30">
+          <svg class="h-6 w-6 text-primary" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path clip-rule="evenodd" d="M24 4H42V17.3333V30.6667H24V44H6V30.6667V17.3333H24V4Z" fill="currentColor"
+              fill-rule="evenodd"></path>
+          </svg>
+        </div>
+        <h2 class="mt-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">AthletiQ</h2>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Welcome back! Please sign in to your account.</p>
+      </div>
+      <form class="space-y-6 rounded-xl bg-white/5 p-8 shadow-2xl shadow-black/10 backdrop-blur-sm dark:bg-black/10"
+        onsubmit="handleLogin(event)">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            Username or Email
+          </label>
+          <div class="mt-1">
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required
+              class="block w-full appearance-none rounded-lg border border-gray-300 bg-gray-50 px-3 py-3 placeholder-gray-400 shadow-sm focus:border-primary focus:outline-none focus:ring-primary dark:border-gray-600 dark:bg-background-dark dark:text-white dark:placeholder-gray-500 dark:focus:border-primary/80 dark:focus:ring-primary/80" />
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            Password
+          </label>
+          <div class="mt-1">
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••"
+              required
+              class="block w-full appearance-none rounded-lg border border-gray-300 bg-gray-50 px-3 py-3 placeholder-gray-400 shadow-sm focus:border-primary focus:outline-none focus:ring-primary dark:border-gray-600 dark:bg-background-dark dark:text-white dark:placeholder-gray-500 dark:focus:border-primary/80 dark:focus:ring-primary/80" />
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <input id="remember-me" name="remember-me" type="checkbox"
+              class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary dark:border-gray-600 dark:bg-background-dark dark:ring-offset-background-dark" />
+            <label for="remember-me" class="ml-2 block text-sm text-gray-900 dark:text-gray-300">
+              Remember me
+            </label>
+          </div>
+          <div class="text-sm">
+            <a href="#" class="font-medium text-primary hover:text-primary/80">Forgot your password?</a>
+          </div>
+        </div>
+
+        <div>
+          <button type="submit"
+            class="flex w-full justify-center rounded-lg bg-primary px-4 py-3 text-sm font-bold text-background-dark shadow-sm transition hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:text-background-dark dark:focus:ring-offset-background-dark">
+            Log In
+          </button>
+        </div>
+      </form>
+
     </div>
   </div>
 
-  <div>
-    <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-      Password
-    </label>
-    <div class="mt-1">
-      <input
-        id="password"
-        name="password"
-        type="password"
-        autocomplete="current-password"
-        placeholder="••••••••"
-        required
-        class="block w-full appearance-none rounded-lg border border-gray-300 bg-gray-50 px-3 py-3 placeholder-gray-400 shadow-sm focus:border-primary focus:outline-none focus:ring-primary dark:border-gray-600 dark:bg-background-dark dark:text-white dark:placeholder-gray-500 dark:focus:border-primary/80 dark:focus:ring-primary/80"
-      />
-    </div>
-  </div>
 
-  <div class="flex items-center justify-between">
-    <div class="flex items-center">
-      <input
-        id="remember-me"
-        name="remember-me"
-        type="checkbox"
-        class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary dark:border-gray-600 dark:bg-background-dark dark:ring-offset-background-dark"
-      />
-      <label for="remember-me" class="ml-2 block text-sm text-gray-900 dark:text-gray-300">
-        Remember me
-      </label>
-    </div>
-    <div class="text-sm">
-      <a href="#" class="font-medium text-primary hover:text-primary/80">Forgot your password?</a>
-    </div>
-  </div>
+</body>
 
-  <div>
-    <button
-      type="submit"
-      class="flex w-full justify-center rounded-lg bg-primary px-4 py-3 text-sm font-bold text-background-dark shadow-sm transition hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:text-background-dark dark:focus:ring-offset-background-dark"
-    >
-      Log In
-    </button>
-  </div>
-</form>
-
-</div>
-</div>
-
-
-</body></html>
+</html>
